@@ -1,0 +1,25 @@
+instance Functor [] where
+(a) fmap _ []    = []
+(b) fmap f (h:t) = (f h):(fmap f t)
+
+(1) fmap id    = id
+
+(a)fmap id [] = []
+
+(b)fmap id (h:t) = (id h):fmap( id t)
+   fmap id (h:t) = h:fmap(t) --> ID wir ausgegeben
+
+
+
+(2)fmap (f.g) = fmap f . (fmap g)
+   fmap (f.g) F =fmap f (fmap g F)
+
+(a)fmap(f.g) auf einer leeren Liste -> fmap f(fmap g([])) = []
+
+(b)fmap (f.g) (h:t) = f(g h):fmap (f(g t))
+
+   fmap f(fmap g (h:t)) -> fmap g (h:t)= (g h):(fmap g t)
+
+==> fmap f(fmap g (h:t)) = f (g h):fmap f(fmap g t)
+
+

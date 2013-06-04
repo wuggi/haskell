@@ -1,0 +1,46 @@
+1)
+-- (1)
+  (Just x) >>= k = k x
+-- (2)
+  Nothing >> _ = Nothing
+
+Erstes Gesetzt (bind):
+
+Fall (1):
+(Just x) >> k bildet ein (Just x) über die Funktion k ab. Da ETWAS herein gegeben wird, muss auch ETWAS herauskommen.
+
+Fall (2):
+Auf NICHTS kann auch keine Funktion angewendet werden und es kommt NICHTS heraus. Folglich ist es eine Abbildung k: Nothing -> Nothing
+Damit wird das erste Gesetz für alle Fälle erfüllt.
+
+
+Zweites Gesetzt(return)
+
+(Just _) >> k   = k
+Nothing >> _    = Nothing
+
+Für einen Wert jeden Typ von Maybe wird eine Funktion festgelegt, über die der Wert des zugehörigen Monadentyps erreichbar ist.
+Im Fall Just ist das k.
+Im Fall Nothing kommt immer Nothing heraus (Nothing -> Nothing)
+
+
+Drittes Gesetzt(Assoziativität)
+
+Drittes Gesetz (Assoziativität)
+Angenommen k ist eine Funktion
+	
+a::(g >>= h) -> Maybe x
+
+so ergäbe sich:
+	
+(Just x) >>= a = a x
+
+also
+	
+(Just x) >>= (\x -> a x >>= h) = (x >>= a) >>= h
+
+bzw. (sytaktisch inkorrekt)
+	
+(Just x) >>= a = (x >>= a) >>= h
+
+Man sieht recht schnell, dass die Assoziativität gegeben ist.

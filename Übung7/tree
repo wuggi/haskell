@@ -1,0 +1,20 @@
+instance Functor Tree where
+(a) fmap f (Leaf a) = Leaf (f a)
+(b) fmap f (Branch left right) = Branch (fmap f left) (fmap f right)
+
+(1)fmap id    = id
+
+(a)fmap id (Leaf a) = Leaf (id a) = Leaf (a)
+(b)fmap id ((Branch left right) = Branch (fmap id left) (fmap id right)
+   = Branch left right
+
+
+(2)fmap (f.g) = fmap f . (fmap g)
+   fmap (f.g) F =fmap f (fmap g F)
+
+(a) fmap (f.g) (Leaf a) : fmap f ( fmap g (Leaf a)) -> fmap g (Leaf a) -> Leaf (g a)
+	--> fmap f (Leaf (g a) -> Leaf (f(g a))
+
+
+(b)fmap (f.g) (Branch left right): 1. Branch (fmap g left)(fmap g right)
+				   2. Branch (fmap f(fmap g left)) (fmap f(fmap g right))
