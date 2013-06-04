@@ -1,0 +1,3 @@
+haskell
+=======
+Funktionale Programmierung @ OvGU
